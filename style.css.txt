@@ -1,0 +1,443 @@
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    background: linear-gradient(
+        135deg,
+        #6a11cb,
+        #2575fc
+    );
+
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+
+/* ================= GALLERY SECTION ================= */
+
+.gallery-section {
+    padding: 50px 0;
+}
+
+
+/* ================= FILTER BUTTONS ================= */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    border: none;
+    outline: none;
+
+    padding: 12px 25px;
+
+    background: white;
+    color: #333;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.filter-btn:hover {
+    background: #2575fc;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.filter-btn.active {
+    background: #2575fc;
+    color: white;
+}
+
+
+/* ================= IMAGE GRID ================= */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* ================= GALLERY ITEM ================= */
+
+.gallery-item {
+    position: relative;
+
+    height: 250px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    background: #ddd;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+    transition: transform 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ================= IMAGE ================= */
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.12);
+
+    filter: brightness(70%);
+}
+
+
+/* ================= IMAGE OVERLAY ================= */
+
+.image-overlay {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 25px 20px;
+
+    color: white;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.85)
+    );
+
+    transform: translateY(20px);
+
+    opacity: 0;
+
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover .image-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-overlay h3 {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.image-overlay p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.94);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.lightbox.show {
+    display: flex;
+}
+
+
+/* ================= LIGHTBOX CONTENT ================= */
+
+.lightbox-content {
+    max-width: 85%;
+    max-height: 90%;
+
+    text-align: center;
+
+    animation: zoomIn 0.3s ease;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 75vh;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ================= CAPTION ================= */
+
+.caption {
+    color: white;
+    margin-top: 15px;
+}
+
+.caption h2 {
+    font-size: 24px;
+}
+
+.caption p {
+    color: #bbb;
+}
+
+
+/* ================= LIGHTBOX BUTTONS ================= */
+
+.close-btn,
+.prev-btn,
+.next-btn {
+    position: absolute;
+
+    border: none;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 30px;
+
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover,
+.prev-btn:hover,
+.next-btn:hover {
+    background: #2575fc;
+
+    transform: scale(1.1);
+}
+
+
+/* Close */
+
+.close-btn {
+    top: 25px;
+    right: 30px;
+}
+
+
+/* Previous */
+
+.prev-btn {
+    left: 30px;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* Next */
+
+.next-btn {
+    right: 30px;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+/* ================= ANIMATION ================= */
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #151515;
+
+    color: #aaa;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 14px;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1000px) {
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header h1 {
+        font-size: 36px;
+    }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 50px 15px;
+    }
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .gallery-item {
+        height: 200px;
+    }
+
+    .filter-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 15px;
+    }
+
+    .lightbox-content {
+        max-width: 90%;
+    }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 450px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 250px;
+    }
+
+    .filters {
+        gap: 8px;
+    }
+}
